@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link href="css/base.css" rel="stylesheet">
+    <link href="css/projectReports.css" rel="stylesheet">
+
+
+    <title>Project Documentation: CS350 Group 5 Project</title>
+</head>
+<body>
+    <div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-3 col-md-2 bg-light hidden-md-down" id="main-nav">
+<br />
+<h5>
+        <a href="home.html">Home</a>
+</h5>
+    <h5>Project Info</h5>
+    <ul>
+        <li>
+            <a href="javadoc/index.html" target="_blank">
+                API (Javadoc)
+            </a>
+        </li>
+        <li>
+            <a href="doxygen/html/index.html" target="_blank">
+                API (Doxygen)
+            </a>
+        </li>
+        <li>
+            <a href="dependencies.html" target="_blank">
+                Dependencies
+            </a>
+        </li>
+        <li>
+            <a href="tasks.html" target="_blank">
+                Gradle Tasks
+            </a>
+        </li>
+    </ul>
+
+    <h5>Testing</h5>
+    <ul>
+        <li>
+            <a href="junit.html">
+                Unit Tests
+            </a>
+        </li>
+        <li>
+            <a href="coverage.html">Unit Test Coverage</a>
+        </li>
+        <li>
+            <a href="junitIntegration.html">
+                Integration Tests
+            </a>
+        </li>
+        <li>
+            <a href="coverageIntegration.html">
+                Integration Test Coverage
+            </a>
+        </li>
+        <li>
+            <a href="coverageMerged.html">
+                Merged Test Coverage
+            </a>
+        </li>
+    </ul>
+
+    <h5>Analysis Reports</h5>
+    <ul>
+        <li><a href="checkstyle.html">Checkstyle</a></li>
+        <li><a href="pmd.html">PMD</a></li>
+        <li><a href="spotbugs.html">SpotBugs</a></li>
+    </ul>        </div>
+
+        <div class="col">
+            <div class="mh-90">
+                <div class="pageHeader">
+                    <h1>Project Documentation: CS350 Group 5 Project</h1>
+                </div>
+                <p><em>10 April 2020</em></p>
+
+                <p>This is an example home page.</p>
+<hr />
+<h1>CS 350 Offline Website Analysis</h1>
+<p>CS350, Old Dominion Univ., Summer 2022</p>
+<p>Authors:</p>
+<p>-skey008 - skey008@odu.edu</p>
+<p>-pcooney001 - pcoon002@odu.edu</p>
+<p>-jwangCSProject - jwang010@odu.edu</p>
+<p>-gideon8 - akyer002@odu.edu</p>
+<p>-tolde001 - Tolde001@odu.edu</p>
+<p>-elemo008 - elemo003@odu.edu</p>
+<p>Samantha Key, Patrick Cooney, Joshua Wang, Gideon Kyremeh, Tessa Olden, Emonti Lemon</p>
+<ul>
+<li>(https://trello.com/b/oWdrPgfg/cs-350-project)</li>
+</ul>
+<h4>Initial Domain Model</h4>
+<p><img src="https://user-images.githubusercontent.com/106193469/177422766-eaa94bcf-ac54-4168-885a-b056a62d29d8.png" alt="image" /></p>
+<p>class Website { Path localPath Collection<URL> siteURLs Collection<HTMLDocument> allPages }</p>
+<p>Class HTMLDocument { Path localPath Collection<StyleSheet> styles Collection<JavaScript> scripts Collection<Anchor> links Collection<Image> images</p>
+<p>}</p>
+<p>class DocumentParser { classifyExternalPages classifyInteralPages</p>
+<p>}</p>
+<p>class WebsiteWalker { getDirectoryPathFromURL discardDuplicateLinks</p>
+<p>}</p>
+<p>class ExcelWriter { mehtods to write to excel }</p>
+<p>class JSONWriter { mehtods to write on JSON File }</p>
+<p>class TextWriter { methods to write on text file }</p>
+<p>class Resource { getURL getNumberOfRefrencedPages getNumExternalPages getNumInternalPages getNumIntrapages } class Stylesheet extends Resource { getUtilizedStylesheetCount }</p>
+<p>class Script extends Resource{ getUtilizedScriptCount }</p>
+<p>class Image extends Resource { getSize }</p>
+<p>class Date { currentYear currentMonth currentDay currentHour currentMin currentSec }</p>
+<p>class Anchor extends Resource { URI path Classification linkType TargetType destinationType }</p>
+<p>enum Classification { INTERNAL INTRAPAGE EXTERNAL }</p>
+<p>enum TargetType { HTMLDOCUMENT ARCHIVE VIDEO AUDIO }</p>
+<p>class CLI { Type commandLineArgument</p>
+<pre><code>generateTXTFileName
+generateJSONFileName
+generateExcelFileName
+validateDirectories
+validateURLS
+validateCommandLineArguments(commandLineArgument)
+</code></pre>
+<p>}</p>
+<p>Website *-- HTMLDocument DocumentParser --&gt;&quot;populates&quot; HTMLDocument Website *---WebsiteWalker</p>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+    <!--script src="js/jquery-1.11.1.min.js"></script-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>

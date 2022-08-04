@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Website.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS350Grp5</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">Website.java</span></div><h1>Website.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Vector;
+
+/**
+*Website holds a collection of all files in the target directory, as well as a collection of all HtmlDocuments.
+*Also invokes output writers.
+*@author
+*
+*/
+ public class Website {
+   
+        /*
+         * A list of all files in the project's folder structure
+         */
+         Vector&lt;File&gt; filelist;
+
+
+         /*
+          *A list of HTMLDocuments objects
+          */
+          Vector&lt;HTMLDocument&gt; HtmlDocumentList;
+
+          String localPath;
+
+          /**
+           * Default Constructor
+           */
+<span class="nc" id="L31">           public Website(){</span>
+<span class="nc" id="L32">                    filelist = new Vector&lt;File&gt;();</span>
+<span class="nc" id="L33">                    HtmlDocumentList = new Vector&lt;HTMLDocument&gt;();</span>
+<span class="nc" id="L34">                    localPath = &quot;&quot;;</span>
+<span class="nc" id="L35">           }</span>
+
+           /**
+            * Website Constrcutor Path
+            */
+           /**
+           * Website Path URL
+           * 
+           /** Webtsite Path URL URL
+            */
+          /** 
+           public Website(String path, WebsiteWalker walker)
+           {
+          localPath = path;
+          fileList = walker.fileList;
+          HtmlDocumentList = walker.HtmlDocumentList;
+           }
+		*/
+           /**
+           * setter for localPath data member
+           * @param path path for website directory
+           */
+           
+<span class="nc" id="L58">           public void setLocalPath(String path) {this.localPath = path;}</span>
+           
+           /**
+           * getter for localPath data member
+           * @return localPath path to website directory
+           */
+           
+<span class="nc" id="L65">           public String getLocalPath() {return this.localPath;}</span>
+           
+           /**
+           * getter for collection of File
+           * @return FileList collection of files from webpage directory
+           */
+           
+<span class="nc" id="L72">           public Vector&lt;File&gt; getFileList() {return filelist;}</span>
+           
+           /**
+           * adds a file to the collection of files
+           * @param file a file contained in the target folder
+           */
+           
+<span class="nc" id="L79">           public void setFileList(File file) {this.filelist.add(file);}</span>
+           
+           /**
+           * getter for collection of HtmlDocuments
+           *@return htmlDocumentLister list of HtmlDocuments in program
+           */
+           
+<span class="nc" id="L86">           public Vector&lt;HTMLDocument&gt; getHtmlDocumentList() {return HtmlDocumentList;}</span>
+           
+           /**
+           * getter for collection of HtmlDocuments
+           * @return htmlDocument object
+           */
+           
+<span class="nc" id="L93">           public void setHtmlDocumentList(HTMLDocument doc) {this.HtmlDocumentList.add(doc);}</span>
+           
+           /**
+           * Calls the ExcelWriter, JSONWriter, and TextFileWriter.
+           * @throws IOException
+           */
+           
+           public void generaeOutputs() throws IOException
+           {
+          /*
+           * Generate JSON output
+           */
+          // This writes a JSON file to the bin folder btw
+          
+        //	   JSONWriter JSONout = new JSONWriter();
+        //  JSONout.writeJsonFile(localPath, HtmlDocumentList);
+         
+        	   /**
+          TextWriter TxtOut = new TextWriter();
+          TxtOut.writeDataToTextFile(localPath, HtmlDocumentList);
+         */
+<span class="nc" id="L114">           }</span>
+ }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

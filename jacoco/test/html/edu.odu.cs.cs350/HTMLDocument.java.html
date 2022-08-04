@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HTMLDocument.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS350Grp5</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">HTMLDocument.java</span></div><h1>HTMLDocument.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.util.ArrayList;
+import java.io.File;
+
+public class HTMLDocument {
+
+	public String localFile;
+
+	public ArrayList&lt;String&gt; stylesheets;
+	public ArrayList&lt;String&gt; anchorlinks;
+	public ArrayList&lt;String&gt; imagelinks;
+	public ArrayList&lt;String&gt; scriptlinks;
+	public ArrayList&lt;String&gt; links;
+
+	//Create an ArrayList of Image/Script/Stylesheet/media file Objects for each HTMLDocument
+	//Later collect group of HTMLDocuments into WebPage.java 
+	//Organize all data from HTMLDocuments into the WebPage.java
+	public ArrayList&lt;Image&gt; images; 
+	public ArrayList&lt;Script&gt; scripts; 
+	public ArrayList&lt;StyleSheet&gt; styleSheets; 
+	public ArrayList&lt;Resource&gt; archiveFiles; 
+	public ArrayList&lt;Resource&gt; videoFiles; 
+	public ArrayList&lt;Resource&gt; audioFiles; 
+	public ArrayList&lt;Resource&gt; miscFiles; 
+
+	
+
+    /**
+     * Default contructor that creates multiple ArrayLists of string type for anchor links, sheets, images, scripts and directory links.
+    */
+<span class="fc" id="L32">	public HTMLDocument() {</span>
+		//first group of ArrayLists for storing Strings
+<span class="fc" id="L34">		this.anchorlinks = new ArrayList&lt;String&gt;(); </span>
+<span class="fc" id="L35">		this.stylesheets = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L36">		this.imagelinks = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L37">		this.scriptlinks = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L38">		this.links = new ArrayList&lt;String&gt;();</span>
+
+		//first group of ArrayLists for storing Images, Scripts, Style Sheets, and Resource objects
+<span class="fc" id="L41">		this.images = new ArrayList&lt;Image&gt;();</span>
+<span class="fc" id="L42">		this.scripts = new ArrayList&lt;Script&gt;();</span>
+<span class="fc" id="L43">		this.styleSheets = new ArrayList&lt;StyleSheet&gt;();</span>
+<span class="fc" id="L44">		this.archiveFiles = new ArrayList&lt;Resource&gt;();</span>
+<span class="fc" id="L45">		this.videoFiles = new ArrayList&lt;Resource&gt;();</span>
+<span class="fc" id="L46">		this.audioFiles = new ArrayList&lt;Resource&gt;();</span>
+<span class="fc" id="L47">		this.miscFiles = new ArrayList&lt;Resource&gt;();</span>
+<span class="fc" id="L48">	}</span>
+	
+	/*
+	public HTMLDocument(File file) 
+    {
+        this.localFile = file; 
+    }*/
+	
+	/**
+	 * Add a anchor tag to HTMLDocument.
+	 * 
+     * @param newTag the anchor tag in an HTML Document
+     */
+	public void addAnchorTags(String newTag)
+	{
+<span class="fc" id="L63">		this.anchorlinks.add(newTag);</span>
+<span class="fc" id="L64">	}</span>
+	
+	/**
+	 * Add a script tag to HTMLDocument.
+	 * 
+     * @param newScript the script tag in an HTML Document
+     */
+	public void addScriptTags(String newScript)
+	{
+<span class="fc" id="L73">		this.scriptlinks.add(newScript);</span>
+<span class="fc" id="L74">	}</span>
+	
+	/**
+	 * Add a link tag to HTMLDocument.
+	 * 
+     * @param newLink the link tag in an HTML Document
+     */
+	public void addLinkTags(String newLink)
+	{
+<span class="fc" id="L83">		this.links.add(newLink);</span>
+<span class="fc" id="L84">	}</span>
+	
+	/**
+	 * Add a image link to HTMLDocument.
+	 * 
+     * @param newImageLink the image link in an HTML Document
+     */
+	public void addImageTags(String newImageLink)
+	{
+<span class="fc" id="L93">		this.imagelinks.add(newImageLink);</span>
+<span class="fc" id="L94">	}</span>
+	
+	/**
+	 * Add a style sheet to HTMLDocument.
+	 * 
+     * @param newStyleSheet the style sheet in an HTML Document
+     */
+	public void addStyleTags(String newStylesheet)
+	{
+<span class="fc" id="L103">		this.stylesheets.add(newStylesheet);</span>
+<span class="fc" id="L104">	}</span>
+	
+	/**
+	 * Add a image to HTMLDocument.
+	 * 
+     * @param newImage the image in an HTML Document
+     */
+	
+	public void addImages(Image newImage)
+	{
+<span class="fc" id="L114">		this.images.add(newImage);</span>
+<span class="fc" id="L115">	}</span>
+
+	public void addScripts(Script newScript)
+	{
+<span class="fc" id="L119">		this.scripts.add(newScript);</span>
+<span class="fc" id="L120">	}</span>
+	
+	public void addStyleSheets(StyleSheet newStyleSheet)
+	{
+<span class="fc" id="L124">		this.styleSheets.add(newStyleSheet);</span>
+<span class="fc" id="L125">	}</span>
+
+	/**
+	 * Takes in a string, string is then converted to resource object, and added to 
+	 * archivedFiles array list.
+	 * @param inString string to be added
+	 */
+	public void addArchivedFile(String inString)
+	{
+<span class="fc" id="L134">		Resource temp = new Resource(inString);</span>
+<span class="fc" id="L135">		this.archiveFiles.add(temp);</span>
+<span class="fc" id="L136">	}</span>
+
+	/**
+	 * Takes in a string, string is then converted to resource object, and added to 
+	 * videoFiles array list.
+	 * @param inString string to be added
+	 */
+	public void addVideoFile(String inString)
+	{
+<span class="fc" id="L145">		Resource temp = new Resource(inString);</span>
+<span class="fc" id="L146">		this.videoFiles.add(temp);</span>
+<span class="fc" id="L147">	}</span>
+
+	/**
+	 * Takes in a string, string is then converted to resource object, and added to 
+	 * audioFiles array list.
+	 * @param inString string to be added
+	 */
+	public void addAudioFile(String inString)
+	{
+<span class="fc" id="L156">		Resource temp = new Resource(inString);</span>
+<span class="fc" id="L157">		this.audioFiles.add(temp);</span>
+<span class="fc" id="L158">	}</span>
+
+	/**
+	 * Takes in a string, string is then converted to resource object, and added to 
+	 * miscFiles array list.
+	 * @param inString string to be added
+	 */
+	public void addMiscFile(String inString)
+	{
+<span class="nc" id="L167">		Resource temp = new Resource(inString);</span>
+<span class="nc" id="L168">		this.miscFiles.add(temp);</span>
+<span class="nc" id="L169">	}</span>
+
+	/**
+	 * Return an HTMLDocument's Anchor tags
+	 * 
+     * @return A .txt file's Anchortag 
+    */    
+	public ArrayList&lt;String&gt; getAnchorTags()
+	{
+<span class="fc" id="L178">		return this.anchorlinks;</span>
+	}
+	
+	/**
+	 * Return an HTMLDocument's Script tags
+	 * 
+     * @return A .txt file's Script tag
+    */    
+	public ArrayList&lt;String&gt; getScriptsTags()
+	{
+<span class="fc" id="L188">		return this.scriptlinks;</span>
+	}
+	
+	/**
+	 * Return an HTMLDocument's Links tags
+	 * 
+     * @return A .txt file's Link Tag
+    */    
+	public ArrayList&lt;String&gt; getLinkTags()
+	{
+<span class="fc" id="L198">		return this.links;</span>
+	}
+	
+	/**
+	 * Return an HTMLDocument's Image tags
+	 * 
+     * @return A .txt file's Image tag
+    */    
+	public ArrayList&lt;String&gt; getImageTags()
+	{
+<span class="fc" id="L208">		return this.imagelinks;</span>
+	}
+	
+	/**
+	 * Return an HTMLDocument's Style tags
+	 * 
+     * @return A .txt file's Style tag 
+    */    
+	public ArrayList&lt;String&gt; getStyleTags()
+	{
+<span class="fc" id="L218">		return this.stylesheets;</span>
+	}
+
+
+	/*
+	//represents local path of a website
+	public void getLocalHTMLDocument() 
+    {
+		// url  object
+        URL url = null;
+  
+        try {
+            // create a URL
+            url = new URL(
+                &quot;insert website name here&quot;);
+  
+            // get the  Path
+            String _Path = url.getPath();
+  
+            // display the URL
+            System.out.println(&quot;URL = &quot; + url);
+  
+            // display the  Path
+            System.out.println(&quot; Path= &quot; + _Path);
+        }
+        // if any error occurs
+        catch (Exception e) {
+  
+            // display the error
+            System.out.println(e);
+        }
+    }*/
+	
+	/**
+	 * Return an HTMLDocument's Image 
+	 * 
+     * @return A .txt file's Image 
+    */
+	
+	//these lines below were changed from &quot;ArrayList&lt;String&gt;&quot; to &quot;ArrayList&lt;Image&gt;, resource, stylesheet&quot;
+	public ArrayList&lt;Image&gt; getImage()
+	{
+<span class="fc" id="L260">		return this.images;</span>
+	}
+	
+	public ArrayList&lt;Script&gt; getScripts()
+	{
+<span class="fc" id="L265">		return this.scripts;</span>
+	}
+	
+	public ArrayList&lt;StyleSheet&gt; getStyleSheets()
+	{
+<span class="fc" id="L270">		return this.styleSheets;</span>
+	}
+	
+	public ArrayList&lt;Resource&gt; getArchiveFiles()
+	{
+<span class="nc" id="L275">		return this.archiveFiles;</span>
+	}
+	
+	public ArrayList&lt;Resource&gt; getVideoFiles()
+	{
+<span class="nc" id="L280">		return this.videoFiles;</span>
+	}
+	
+	public ArrayList&lt;Resource&gt; getAudioFiles()
+	{
+<span class="nc" id="L285">		return this.audioFiles;</span>
+	}
+	
+	public ArrayList&lt;Resource&gt; getMiscFiles()
+	{
+<span class="nc" id="L290">		return this.miscFiles;</span>
+	}
+	
+	/**
+     * Retrieve the message of the HTMLDocument, expressed as a string.
+     * 
+     * @return message as a string from the HTMLDocument.
+     */
+    public String HTMLDocument()
+    {
+        //return this.file;
+<span class="nc" id="L301">		return &quot;&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DocumentParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS350Grp5</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">DocumentParser.java</span></div><h1>DocumentParser.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+/*
+ * Extracts all HTML information: anchor tags, image tags, script tags
+ * and link tags. All extracted information is then stored into the new
+ * HTMLDocument object
+ */
+
+public class DocumentParser {
+    
+    private HTMLDocument document;
+
+    /**
+     * Constructor for the DocumentParser
+     * @param HTMLDocument doc object taken in to classify local path
+     */
+    public DocumentParser(HTMLDocument doc)
+<span class="fc" id="L29">    {</span>
+
+<span class="fc" id="L31">        this.document = doc;</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Takes in an HTMLDocument object, parses through, extracting any
+     * anchor tags located within the object and returns it to the HTMLDocument
+     * object's storage
+     * @param document to store extracted anchors
+     * @param inFile to read and extract the anchors from into the HTML Document
+     * @throws FileNotFoundException throws an error if a file is not located
+     */
+    public void extractAnchors(HTMLDocument document, File inFile)
+    {
+        //replace with document's relative filepath name once HTMLDocument method is set 
+<span class="fc" id="L45">        File currentFile = inFile; </span>
+
+        try 
+        {
+            //create scanner to open the file at specified path 
+<span class="fc" id="L50">            Scanner scan = new Scanner(currentFile);</span>
+
+            //loops through .html file and finds all anchor links 
+            //without the if statements, it will throw a NoSuchElementException 
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L56">                scan.useDelimiter(&quot;href&quot;);    //goes to the start first anchor link </span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L59">                    scan.next(); //ignores everything before the 1st anchor link </span>
+                }
+<span class="fc" id="L61">                scan.useDelimiter(&quot;\&quot;&quot;); //this will remove the quotation marks around the weblink </span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L64">                    scan.next(); //ignores the gap between href and the &quot; that starts the link.  </span>
+                }
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L68">                   document.addAnchorTags(scan.next()); </span>
+                }               
+            }
+           
+            //debugging code to confirm the Scanner is getting the correct information:  
+            // try 
+            // {
+            // FileWriter writer = new FileWriter(&quot;outputFile.txt&quot;, false);
+            // BufferedWriter buffWriter = new BufferedWriter(writer);
+            // buffWriter.write(document.anchorlinks.get(0));
+            // buffWriter.write(&quot;\n&quot;);
+            // buffWriter.write(document.anchorlinks.get(1));
+            // buffWriter.write(&quot;\n&quot;);
+            // buffWriter.write(document.anchorlinks.get(2));
+            // buffWriter.close(); 
+            // } 
+            // catch (IOException e) 
+            // {
+            //     e.printStackTrace();
+            // }
+
+<span class="fc" id="L89">            scan.close(); </span>
+
+
+        } 
+<span class="nc" id="L93">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L95">            e.printStackTrace();</span>
+<span class="fc" id="L96">        }</span>
+
+
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * Takes in an HTMLDocument object, parses through, extracting any
+     * images located within the object and returns it to the HTMLDocument
+     * object's storage
+     * @param document to store extracted images
+     * @param inFile to read and extract the images from into the HTML Document
+     * @throws FileNotFoundException throws an error if a file is not located
+     */
+    public void extractImages(HTMLDocument document, File inFile)
+    {
+<span class="fc" id="L111">        File currentFile = inFile;         </span>
+
+        try 
+        {
+<span class="fc" id="L115">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L117" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L119">                scan.useDelimiter(&quot;img&quot;);   </span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L122">                    scan.next();</span>
+                }
+<span class="fc" id="L124">                scan.useDelimiter(&quot;\&quot;&quot;); </span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L127">                    scan.next();   </span>
+                }
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L131">                   document.addImageTags(scan.next()); </span>
+                }               
+            }
+
+<span class="fc" id="L135">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L138">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L140">            e.printStackTrace();</span>
+<span class="fc" id="L141">        }</span>
+<span class="fc" id="L142">    }</span>
+
+    /**
+     * Takes in an HTMLDocument object, parses through, extracting any
+     * scripts located within the object and returns it to the HTMLDocument
+     * object's storage
+     * @param document to store extracted scripts
+     * @param inFile to read and extract the scripts from into the HTML Document
+     * @throws FileNotFoundException throws an error if a file is not located
+     */
+    public void extractScripts(HTMLDocument document, File inFile)
+    {
+        //have to read into testHtml2 as testHtml1 has no script
+<span class="fc" id="L155">        File currentFile = inFile;         </span>
+
+        try 
+        {
+<span class="fc" id="L159">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L161" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L163">                scan.useDelimiter(&quot;src&quot;);   </span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L166">                    scan.next();</span>
+                }
+<span class="fc" id="L168">                scan.useDelimiter(&quot;\&quot;&quot;); </span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L171">                    scan.next();   </span>
+                }
+<span class="fc bfc" id="L173" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L175">                   document.addScriptTags(scan.next()); </span>
+                }               
+            }
+
+<span class="fc" id="L179">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L182">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L184">            e.printStackTrace();</span>
+<span class="fc" id="L185">        }</span>
+<span class="fc" id="L186">    }</span>
+
+    /**
+     * Takes in an HTMLDocument object, parses through, extracting any
+     * links located within the object and returns it to the HTMLDocument
+     * object's storage
+     * @param document to store extracted links
+     * @param inFile to read and extract the links from into the HTML Document
+     * @throws FileNotFoundException throws an error if a file is not located
+     */
+    public void extractLinks(HTMLDocument document, File inFile)
+    {
+        //check for duplicate links; only send one unique link
+<span class="fc" id="L199">        File currentFile = inFile;         </span>
+
+        try 
+        {
+<span class="fc" id="L203">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L207">                scan.useDelimiter(&quot;alt&quot;);   </span>
+<span class="pc bpc" id="L208" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L210">                    scan.next();</span>
+                }
+<span class="fc" id="L212">                scan.useDelimiter(&quot;\&quot;&quot;); </span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L215">                    scan.next();   </span>
+                }
+<span class="fc bfc" id="L217" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L219">                   document.addLinkTags(scan.next()); </span>
+                }               
+            }
+
+<span class="fc" id="L223">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L226">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L228">            e.printStackTrace();</span>
+<span class="fc" id="L229">        }</span>
+<span class="fc" id="L230">    }</span>
+
+    /**
+     * Takes in an HTMLDocument object, parses through, extracting any
+     * stylesheets located within the object and returns it to the HTMLDocument
+     * object's storage
+     * @param document to store extracted stylesheets
+     * @param inFile to read and extract the stylesheets from into the HTML Document
+     * @throws FileNotFoundException throws an error if a file is not located
+     */
+    public void extractStyleSheet (HTMLDocument document, File inFile)
+    {
+<span class="fc" id="L242">        File currentFile = inFile;         </span>
+
+        try 
+        {
+<span class="fc" id="L246">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L248" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L250">                scan.useDelimiter(&quot;href&quot;);   </span>
+<span class="pc bpc" id="L251" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L253">                    scan.next();</span>
+                }
+<span class="fc" id="L255">                scan.useDelimiter(&quot;\&quot;&quot;); </span>
+<span class="fc bfc" id="L256" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L258">                    scan.next();   </span>
+                }
+<span class="fc bfc" id="L260" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L262">                   document.addStyleTags(scan.next()); </span>
+                }               
+            }
+
+<span class="fc" id="L266">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L269">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L271">            e.printStackTrace();</span>
+<span class="fc" id="L272">        }</span>
+<span class="fc" id="L273">    }</span>
+
+    /**
+     * Iterates through HTMLDocument object to find possible archived files.
+     * When file is found, new Resource object is made and then added to the 
+     * archivedFiles array list within the HTMLDocument
+     * @param document to iterate through to find possibly archived file
+     * @param inFile
+     */
+    public void extractArchivedFile(HTMLDocument document, File inFile)
+    {
+
+<span class="fc" id="L285">        File currentFile = inFile; </span>
+
+        try {
+
+<span class="fc" id="L289">            Scanner scan = new Scanner(currentFile);</span>
+<span class="fc" id="L290">            String temp = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L292" title="All 2 branches covered.">            while(scan.hasNext())</span>
+            {
+<span class="fc" id="L294">                scan.useDelimiter(&quot;\&quot;&quot;);</span>
+<span class="fc" id="L295">                temp = scan.next();</span>
+<span class="fc bfc" id="L296" title="All 2 branches covered.">                if(temp.contains(&quot;.tar&quot;))</span>
+                {
+<span class="fc" id="L298">                    document.addArchivedFile(temp);</span>
+                }
+<span class="fc bfc" id="L300" title="All 2 branches covered.">                else if(temp.contains(&quot;.zip&quot;))</span>
+                {
+<span class="fc" id="L302">                    document.addArchivedFile(temp);</span>
+                }
+<span class="fc bfc" id="L304" title="All 2 branches covered.">                else if(temp.contains(&quot;.7z&quot;))</span>
+                {
+<span class="fc" id="L306">                    document.addArchivedFile(temp);</span>
+                }           
+<span class="pc bpc" id="L308" title="1 of 2 branches missed.">                else if(temp.contains(&quot;.gz&quot;))</span>
+                {
+<span class="nc" id="L310">                    document.addArchivedFile(temp);                </span>
+                }
+            }
+
+<span class="fc" id="L314">            scan.close();</span>
+<span class="nc" id="L315">        } catch (FileNotFoundException e) {</span>
+            
+<span class="nc" id="L317">            e.printStackTrace();</span>
+<span class="fc" id="L318">        }</span>
+<span class="fc" id="L319">    }</span>
+
+    /**
+     * Iterates through HTMLDocument object to find possible video files.
+     * When file is found, new Resource object is made and then added to the 
+     * videoFiles array list within the HTMLDocument
+     * @param document to iterate through to find possibly existing video files
+     * @param inFile file to scan for video files
+     */
+    public void extractVideoFile(HTMLDocument document, File inFile)
+    {
+
+<span class="fc" id="L331">        File currentFile = inFile;</span>
+
+        try 
+        {
+<span class="fc" id="L335">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L337" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L339">                scan.useDelimiter(&quot;&lt;video&quot;);   </span>
+<span class="pc bpc" id="L340" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L342">                    scan.next();</span>
+                }
+<span class="fc" id="L344">                scan.useDelimiter(&quot;\n&quot;); </span>
+<span class="fc bfc" id="L345" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L347">                    scan.next();   </span>
+                }
+<span class="fc" id="L349">                scan.useDelimiter(&quot;src&quot;);</span>
+<span class="fc bfc" id="L350" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L352">                   scan.next(); </span>
+                }
+<span class="fc" id="L354">                scan.useDelimiter(&quot;\&quot;&quot;);</span>
+<span class="fc bfc" id="L355" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L357">                    scan.next();</span>
+<span class="fc" id="L358">                    document.addVideoFile(scan.next());</span>
+                }               
+            }
+
+            /* **example**
+            should be getting the &quot;movie.ogg&quot; from this snip of code:
+            &lt;video width=&quot;320&quot; height=&quot;240&quot; controls&gt;
+                &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;
+            &lt;/video&gt;
+            */
+<span class="fc" id="L368">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L371">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L373">            e.printStackTrace();</span>
+<span class="fc" id="L374">        }</span>
+<span class="fc" id="L375">    }</span>
+
+    /**
+     * Iterates through HTMLDocument object to find possible audio files.
+     * When file is found, new Resource object is made and then added to the 
+     * audioFiles array list within the HTMLDocument
+     * @param document to iterate through to find possibly existing audio files
+     * @param inFile file to scan for audio files
+     */
+    public void extractAudioFile(HTMLDocument document, File inFile)
+    {
+<span class="fc" id="L386">        File currentFile = inFile;</span>
+
+        try 
+        {
+<span class="fc" id="L390">            Scanner scan = new Scanner(currentFile);</span>
+
+<span class="fc bfc" id="L392" title="All 2 branches covered.">            while (scan.hasNext())</span>
+            {
+<span class="fc" id="L394">                scan.useDelimiter(&quot;&lt;audio&quot;);   </span>
+<span class="pc bpc" id="L395" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L397">                    scan.next();</span>
+                }
+<span class="fc" id="L399">                scan.useDelimiter(&quot;\n&quot;); </span>
+<span class="fc bfc" id="L400" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L402">                    scan.next();   </span>
+                }
+<span class="fc" id="L404">                scan.useDelimiter(&quot;src&quot;);</span>
+<span class="fc bfc" id="L405" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L407">                   scan.next(); </span>
+                }
+<span class="fc" id="L409">                scan.useDelimiter(&quot;\&quot;&quot;);</span>
+<span class="fc bfc" id="L410" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L412">                    scan.next();</span>
+<span class="fc" id="L413">                    document.addAudioFile(scan.next());</span>
+                }               
+            }
+
+            /* **example**
+            should be getting the &quot;horse.mp3&quot; from this snip of code:
+            &lt;audio controls&gt;
+                &lt;source src=&quot;horse.mp3&quot; type=&quot;audio/ogg&quot;&gt;
+            &lt;/audio&gt;
+            */
+<span class="fc" id="L423">            scan.close(); </span>
+
+        } 
+<span class="nc" id="L426">        catch (FileNotFoundException e) </span>
+        {
+<span class="nc" id="L428">            e.printStackTrace();</span>
+<span class="fc" id="L429">        }</span>
+<span class="fc" id="L430">    }</span>
+
+    /**
+     * Iterates through HTMLDocument object to find possible misc files.
+     * When file is found, new Resource object is made and then added to the 
+     * miscFiles array list within the HTMLDocument
+     * @param document to iterate through to find possibly existing misc files
+     * @param inFile
+     */
+    public void extractMiscFile(HTMLDocument document, File inFile)
+    {
+        //anything that does not fall under another category
+<span class="nc" id="L442">    }</span>
+
+    /**
+     * Will parse through the entire file, calling each individual extract method
+     * to store into the HTMLDocument.
+     * @param document
+     * @param inFile
+     */
+    public void parseThroughFile(HTMLDocument document, File inFile)
+    {
+<span class="nc" id="L452">        extractAnchors(document, inFile);</span>
+<span class="nc" id="L453">        extractImages(document, inFile);</span>
+<span class="nc" id="L454">        extractScripts(document, inFile);</span>
+<span class="nc" id="L455">        extractLinks(document, inFile);</span>
+<span class="nc" id="L456">        extractStyleSheet(document, inFile);</span>
+<span class="nc" id="L457">        extractArchivedFile(document, inFile);</span>
+<span class="nc" id="L458">        extractVideoFile(document, inFile);</span>
+<span class="nc" id="L459">        extractAudioFile(document, inFile);</span>
+<span class="nc" id="L460">        extractMiscFile(document, inFile);</span>
+<span class="nc" id="L461">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS350Grp5</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">JsonWriter.java</span></div><h1>JsonWriter.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.ArrayList;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+
+public class JsonWriter
+{
+
+    private String filename;
+
+    /// default contructor
+    public JsonWriter()
+<span class="fc" id="L19">    {</span>
+<span class="fc" id="L20">        Date date = new Date(); </span>
+<span class="fc" id="L21">        SimpleDateFormat ft = new SimpleDateFormat(&quot;yyyyMMdd-HHmmss&quot;); </span>
+<span class="fc" id="L22">        this.filename = (ft.format(date) + &quot;-summary.json&quot;);</span>
+
+<span class="fc" id="L24">    }</span>
+
+    //nondefault constructor
+    public JsonWriter(String name) 
+<span class="fc" id="L28">    {       </span>
+<span class="fc" id="L29">        this.filename = name;</span>
+<span class="fc" id="L30">    }</span>
+
+    public void FileCreator(String name)
+    {
+<span class="nc" id="L34">        this.filename = name;</span>
+<span class="nc" id="L35">    }</span>
+     
+    public void FileCreator()
+    {
+        try 
+        {
+
+<span class="fc" id="L42">            FileWriter texter = new FileWriter(this.filename);</span>
+<span class="fc" id="L43">            texter.close();</span>
+        }
+
+<span class="nc" id="L46">        catch (IOException e)</span>
+        {
+<span class="nc" id="L48">        e.printStackTrace();</span>
+<span class="fc" id="L49">        }</span>
+
+<span class="fc" id="L51">    }</span>
+
+
+
+    public void CodeDataToFile(ArrayList&lt;String&gt;PathNames, ArrayList&lt;Float&gt; Filesize )
+    {
+
+<span class="nc" id="L58">        Iterator&lt;Float&gt; File = Filesize.iterator();</span>
+<span class="nc" id="L59">        Iterator&lt;String&gt;Path = PathNames.iterator();</span>
+
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        while (File.hasNext())</span>
+        {
+            try
+            {
+<span class="nc" id="L65">            FileWriter texter = new FileWriter(this.filename, true);</span>
+<span class="nc" id="L66">            BufferedWriter buffWriter = new BufferedWriter(texter);</span>
+<span class="nc" id="L67">            buffWriter.write(File.next() + &quot;C &quot;);</span>
+<span class="nc" id="L68">            buffWriter.write(Path.next().toString() +&quot;\n&quot;);</span>
+<span class="nc" id="L69">            buffWriter.close(); </span>
+            } 
+
+<span class="nc" id="L72">            catch (IOException e) </span>
+            {
+<span class="nc" id="L74">                e.printStackTrace();</span>
+<span class="nc" id="L75">            }</span>
+        }
+
+<span class="nc" id="L78">        float sumofFileSizes =0;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for(float size: Filesize)</span>
+
+<span class="nc" id="L81">        sumofFileSizes = sumofFileSizes + size;</span>
+        
+
+        try 
+        {
+<span class="nc" id="L86">            FileWriter texter = new FileWriter(this.filename, true);</span>
+<span class="nc" id="L87">            BufferedWriter buffWriter = new BufferedWriter(texter);</span>
+<span class="nc" id="L88">            buffWriter.write(sumofFileSizes + &quot;C&quot;);</span>
+<span class="nc" id="L89">            buffWriter.write(&quot;.\n&quot;);</span>
+<span class="nc" id="L90">            buffWriter.close(); </span>
+        } 
+<span class="nc" id="L92">        catch (IOException e) </span>
+        {
+<span class="nc" id="L94">            e.printStackTrace();</span>
+<span class="nc" id="L95">        }</span>
+<span class="nc" id="L96">    }</span>
+
+
+    public void setFileName(String filename)
+    {
+        
+<span class="fc" id="L102">    }</span>
+
+    public String getFileName()
+    {
+<span class="fc" id="L106">        return this.filename;</span>
+    }
+
+    public void writeDataToJsonFile(ArrayList&lt;String&gt; tempPath, ArrayList&lt;Float&gt; tempFileSizes) {
+<span class="fc" id="L110">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

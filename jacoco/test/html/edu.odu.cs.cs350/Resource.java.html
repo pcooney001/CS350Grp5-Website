@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Resource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS350Grp5</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">Resource.java</span></div><h1>Resource.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.util.ArrayList;
+
+/**
+ * Base class for each individual resource including data files, scripts, stylesheets, images, and links 
+*/
+public class Resource 
+{
+    private String URL; 
+    private String localPath; 
+    protected Classification classType; //whether external/internal/intra  
+    protected ArrayList&lt;String&gt; referencedPages;
+
+    /**
+     * default contructor
+    */
+    public Resource() 
+<span class="fc" id="L19">    {</span>
+<span class="fc" id="L20">        this.URL = &quot;&quot;;</span>
+<span class="fc" id="L21">        this.localPath = &quot;&quot;;</span>
+<span class="fc" id="L22">        this.classType = Classification.INTERNAL;</span>
+<span class="fc" id="L23">        this.referencedPages = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc" id="L25">    }</span>
+
+    /**
+     * @param newURL Create a resource object based on a URL found by the Document Parser 
+    */
+    public Resource(String newURL) 
+<span class="fc" id="L31">    {</span>
+<span class="fc" id="L32">        this.URL = newURL;</span>
+<span class="fc" id="L33">        this.localPath = &quot;&quot;;     //update this once setLocalPath is finished.  </span>
+<span class="fc" id="L34">        this.classType = Classification.INTERNAL;</span>
+<span class="fc" id="L35">        this.referencedPages = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * @param newURL A string containing a URL that will replace the URL of an existing Resource object
+    */
+    public void setURL(String newURL)
+    {
+<span class="fc" id="L43">        this.URL = newURL; </span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * @return String containing Resource object's URL 
+    */
+    public String getURL()
+    {
+<span class="fc" id="L51">        return this.URL;</span>
+    }
+
+    /**
+     * Function to remove the web portion of a given online path and convert it to a local path.  
+     * Based on the URLs provided by CLI.
+     * For example converts www.amazon.com/shopping/localfile.doc to  /shopping/localfile.doc  
+     * @param newPath 
+     */
+    public void setLocalPath(String newPath)
+    {
+        //Find the beginning and end of the specified URL at the start of the newPath 
+<span class="fc" id="L63">        int startIndex = newPath.indexOf(this.URL);</span>
+<span class="fc" id="L64">        int stopIndex = startIndex + this.URL.length(); </span>
+
+        //use StringBuilder to remove the portion found above from the newPath.  
+<span class="fc" id="L67">        StringBuilder builder = new StringBuilder(newPath); </span>
+<span class="fc" id="L68">        builder.delete(startIndex, stopIndex);</span>
+
+<span class="fc" id="L70">        this.localPath = builder.toString(); </span>
+<span class="fc" id="L71">    }</span>
+
+    /**
+     * 
+     * @return The local path for a file related to a Resource Object  
+     */
+    public String getLocalPath()
+    {
+<span class="fc" id="L79">        return this.localPath; </span>
+    }
+
+    /**
+     * Function to remove the web portion of a given online path and convert it to a local path.  
+     * Based on the URLs provided by CLI.
+     * For example converts www.amazon.com/shopping/localfile.doc to  /shopping/localfile.doc  
+     * @Param newPage A String containing a local webpage that a resource is referenced on 
+     * ArrayList&lt;String&gt; that includes the newPage and an incremented page count.  
+     */
+    public void addReferencedPage(String newPage)
+    {
+<span class="fc" id="L91">        this.referencedPages.add(newPage);</span>
+<span class="fc" id="L92">    }</span>
+
+    /**
+     * @param pageToDelete 
+     */
+    public void removeReferencedPage(String pageToDelete)
+    {
+<span class="fc" id="L99">       this.referencedPages.remove(pageToDelete);</span>
+<span class="fc" id="L100">    }</span>
+
+    /**
+     * 
+     * @return Returns an ArrayList of all htmlpages that reference a particular Resource Object 
+     */
+    public ArrayList&lt;String&gt; getReferencedPages()
+    {
+<span class="nc" id="L108">        return this.referencedPages; </span>
+    }
+
+    /**
+     * 
+     * @return The total number of pages that Reference a Resource Object 
+     */
+    public int getNumberReferencedPages()
+    {
+<span class="fc" id="L117">        return this.referencedPages.size(); </span>
+    }
+
+    /**
+     * Rewrite this with logic to select classification based on provided URLs and Paths 
+     */
+    public void setClassType(String newType)
+    {
+<span class="pc bpc" id="L125" title="1 of 4 branches missed.">        switch (newType)</span>
+        {
+            case &quot;INTERNAL&quot;:
+<span class="fc" id="L128">                this.classType = Classification.INTERNAL; </span>
+<span class="fc" id="L129">                break; </span>
+            case &quot;EXTERNAL&quot;:
+<span class="fc" id="L131">                this.classType = Classification.EXTERNAL; </span>
+<span class="fc" id="L132">                break; </span>
+            case &quot;INTRA&quot;:
+<span class="fc" id="L134">                this.classType = Classification.INTRA; </span>
+                break; 
+        }
+
+<span class="fc" id="L138">    }</span>
+
+    /**
+     * @return Whether resource is Internal, External, or Intra 
+     */
+    public Classification getClassType()
+    {
+<span class="fc" id="L145">        return this.classType; </span>
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

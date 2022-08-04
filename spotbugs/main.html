@@ -1,0 +1,601 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>SpotBugs Report</title>
+      <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+				color: red;
+				font-weight: bold;
+		}
+		.priority-2 {
+				color: orange;
+				font-weight: bold;
+		}
+		.priority-3 {
+				color: green;
+				font-weight: bold;
+		}
+		.priority-4 {
+				color: blue;
+				font-weight: bold;
+		}
+		</style>
+      <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+   </head>
+   <body>
+      <h1>
+         <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+      <h2>Project Information</h2>
+      <p>Project: 
+		CS350Grp5 (spotbugsMain)</p>
+      <p>SpotBugs version: 4.2.1</p>
+      <p>Code analyzed:</p>
+      <ul>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/Classification.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/CLI.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/DocumentParser.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/HTMLDocument.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/Image.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/JsonWriter.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/Resource.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/Script.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/StyleSheet.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/TextWriter.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/Website.class</li>
+         <li>/mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/classes/java/main/edu/odu/cs/cs350/WebsiteWalker.class</li>
+      </ul>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Metrics</h2>
+      <p>556 lines of code analyzed,
+	in 12 classes, 
+	in 1 packages.</p>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Metric</th>
+            <th align="right">Total</th>
+            <th align="right">Density*</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>High Priority Warnings</td>
+            <td align="right">12</td>
+            <td align="right">21.58</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Medium Priority Warnings</td>
+            <td align="right">10</td>
+            <td align="right">17.99</td>
+         </tr>
+         <tr class="$totalClass">
+            <td>
+               <b>Total Warnings</b>
+            </td>
+            <td align="right">
+               <b>22</b>
+            </td>
+            <td align="right">
+               <b>39.57</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Contents</h2>
+      <ul>
+         <li>
+            <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_I18N">Internationalization Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+         </li>
+         <li>
+            <a href="#Details">Details</a>
+         </li>
+      </ul>
+      <h1>Summary</h1>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Warning Type</th>
+            <th align="right">Number</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </td>
+            <td align="right">3</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </td>
+            <td align="right">12</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            </td>
+            <td align="right">1</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">6</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <b>Total</b>
+            </td>
+            <td align="right">
+               <b>22</b>
+            </td>
+         </tr>
+      </table>
+      <h1>Warnings</h1>
+      <p>Click on a warning row to see full context information.</p>
+      <h2>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e221');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name edu.odu.cs.cs350.JsonWriter.CodeDataToFile(ArrayList, ArrayList) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e221" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.JsonWriter<br/>In method edu.odu.cs.cs350.JsonWriter.CodeDataToFile(ArrayList, ArrayList)<br/>At JsonWriter.java:[lines 58-96]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e233');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name edu.odu.cs.cs350.JsonWriter.FileCreator() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e233" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.JsonWriter<br/>In method edu.odu.cs.cs350.JsonWriter.FileCreator()<br/>At JsonWriter.java:[lines 42-51]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e245');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name edu.odu.cs.cs350.JsonWriter.FileCreator(String) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e245" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.JsonWriter<br/>In method edu.odu.cs.cs350.JsonWriter.FileCreator(String)<br/>At JsonWriter.java:[lines 34-35]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_I18N">Internationalization Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e18');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractAnchors(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e18" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractAnchors(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 50]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e33');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractArchivedFile(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e33" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractArchivedFile(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 289]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e48');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractAudioFile(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e48" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractAudioFile(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 390]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e63');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractImages(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e63" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractImages(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 115]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e78');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractLinks(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e78" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractLinks(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 203]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e93');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractScripts(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e93" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractScripts(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 159]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e108');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractStyleSheet(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e108" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractStyleSheet(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 246]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e123');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.DocumentParser.extractVideoFile(HTMLDocument, File): new java.util.Scanner(File)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e123" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>In method edu.odu.cs.cs350.DocumentParser.extractVideoFile(HTMLDocument, File)<br/>Called method new java.util.Scanner(File)<br/>At DocumentParser.java:[line 335]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e189');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.JsonWriter.CodeDataToFile(ArrayList, ArrayList): new java.io.FileWriter(String, boolean)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e189" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.JsonWriter<br/>In method edu.odu.cs.cs350.JsonWriter.CodeDataToFile(ArrayList, ArrayList)<br/>Called method new java.io.FileWriter(String, boolean)<br/>At JsonWriter.java:[line 65]<br/>Another occurrence at JsonWriter.java:[line 86]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e206');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.JsonWriter.FileCreator(): new java.io.FileWriter(String)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e206" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.JsonWriter<br/>In method edu.odu.cs.cs350.JsonWriter.FileCreator()<br/>Called method new java.io.FileWriter(String)<br/>At JsonWriter.java:[line 42]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e293');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.TextWriter.createTextFile(): new java.io.FileWriter(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e293" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.TextWriter<br/>In method edu.odu.cs.cs350.TextWriter.createTextFile()<br/>Called method new java.io.FileWriter(String)<br/>At TextWriter.java:[line 41]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e309');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in edu.odu.cs.cs350.TextWriter.writeDataToTextFile(ArrayList, ArrayList): new java.io.FileWriter(String, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e309" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.TextWriter<br/>In method edu.odu.cs.cs350.TextWriter.writeDataToTextFile(ArrayList, ArrayList)<br/>Called method new java.io.FileWriter(String, boolean)<br/>At TextWriter.java:[line 66]<br/>Another occurrence at TextWriter.java:[line 86]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e138');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: edu.odu.cs.cs350.DocumentParser.document</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e138" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.DocumentParser<br/>Field edu.odu.cs.cs350.DocumentParser.document<br/>At DocumentParser.java:[line 31]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e165');">
+            <td>
+               <span class="priority-2">ICAST</span>
+            </td>
+            <td>Integral division result cast to double or float in edu.odu.cs.cs350.Image.setImageSize(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e165" style="display: none;">
+                  <a href="#ICAST_IDIV_CAST_TO_DOUBLE">Bug type ICAST_IDIV_CAST_TO_DOUBLE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.Image<br/>In method edu.odu.cs.cs350.Image.setImageSize(String)<br/>At Image.java:[line 43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e177');">
+            <td>
+               <span class="priority-2">SF</span>
+            </td>
+            <td>Switch statement found in edu.odu.cs.cs350.Image.setClassType(String) where default case is missing</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e177" style="display: none;">
+                  <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.Image<br/>In method edu.odu.cs.cs350.Image.setClassType(String)<br/>At Image.java:[lines 74-80]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e257');">
+            <td>
+               <span class="priority-2">SF</span>
+            </td>
+            <td>Switch statement found in edu.odu.cs.cs350.Resource.setClassType(String) where default case is missing</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e257" style="display: none;">
+                  <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.Resource<br/>In method edu.odu.cs.cs350.Resource.setClassType(String)<br/>At Resource.java:[lines 125-134]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e269');">
+            <td>
+               <span class="priority-2">SF</span>
+            </td>
+            <td>Switch statement found in edu.odu.cs.cs350.Script.setClassType(String) where default case is missing</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e269" style="display: none;">
+                  <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.Script<br/>In method edu.odu.cs.cs350.Script.setClassType(String)<br/>At Script.java:[lines 40-46]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e281');">
+            <td>
+               <span class="priority-2">SF</span>
+            </td>
+            <td>Switch statement found in edu.odu.cs.cs350.StyleSheet.setClassType(String) where default case is missing</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e281" style="display: none;">
+                  <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.StyleSheet<br/>In method edu.odu.cs.cs350.StyleSheet.setClassType(String)<br/>At StyleSheet.java:[lines 37-43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e151');">
+            <td>
+               <span class="priority-2">UuF</span>
+            </td>
+            <td>Unused public or protected field: edu.odu.cs.cs350.HTMLDocument.localFile</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e151" style="display: none;">
+                  <a href="#UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD">Bug type UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.HTMLDocument<br/>Field edu.odu.cs.cs350.HTMLDocument.localFile<br/>In HTMLDocument.java</p>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <a name="Details">Details</a>
+      </h1>
+      <h2>
+         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+      </h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      <h2>
+         <a name="ICAST_IDIV_CAST_TO_DOUBLE">ICAST_IDIV_CAST_TO_DOUBLE: Integral division result cast to double or float</a>
+      </h2>
+
+<p>
+This code casts the result of an integral division (e.g., int or long division)
+operation to double or
+float.
+Doing division on integers truncates the result
+to the integer value closest to zero.  The fact that the result
+was cast to double suggests that this precision should have been retained.
+What was probably meant was to cast one or both of the operands to
+double <em>before</em> performing the division.  Here is an example:
+</p>
+<pre><code>int x = 2;
+int y = 5;
+// Wrong: yields result 0.0
+double value1 = x / y;
+
+// Right: yields result 0.4
+double value2 = x / (double) y;
+</code></pre>
+
+    <h2>
+         <a name="NM_METHOD_NAMING_CONVENTION">NM_METHOD_NAMING_CONVENTION: Method names should start with a lower case letter</a>
+      </h2>
+
+  <p>
+Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized.
+</p>
+
+    <h2>
+         <a name="SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT: Switch statement found where default case is missing</a>
+      </h2>
+
+  <p> This method contains a switch statement where default case is missing.
+  Usually you need to provide a default case.</p>
+  <p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
+the default case is at the end of the switch statement and the switch statement doesn't contain break statements for other
+cases.
+
+    <h2>
+         <a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
+      </h2>
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    <h2>
+         <a name="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD">UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD: Unused public or protected field</a>
+      </h2>
+
+  <p> This field is never used.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    </body>
+</html>
