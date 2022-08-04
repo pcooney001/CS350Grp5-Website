@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 <span class="nc" id="L12">public class CLI {</span>
     /*
-     * The ClI sends the user's input to the WebsiteWalker class, outputs any input errors,
+     * The CLI sends the user's input to the necessary classes for anaylsis, outputs any input errors,
      * and also prints a list of any files created during the analysis.  
      * 
      * @param offlineWebsiteDirectory 
@@ -22,50 +22,55 @@ import java.nio.file.Paths;
     public static void main(String[] args) throws IOException { 
         
        //error handling for no arguments given
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (args.length &lt; 1) {</span>
-<span class="nc" id="L26">            System.err.println(&quot;No arguments found. Please try again.&quot;);</span>
-<span class="nc" id="L27">            System.exit(1);</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (args.length &lt; 1) </span>
+        {
+<span class="nc" id="L27">            System.err.println(&quot;No arguments found. Please try again.&quot;);</span>
+<span class="nc" id="L28">            System.exit(1);</span>
         }
         //error handling for a missing URL or a missing Directory -- must have both
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        else if (args.length &lt; 2)</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        else if (args.length &lt; 2)</span>
         {
-<span class="nc" id="L32">            System.err.println(&quot;Please provide the offline website's directory path and the URL(s) used for the site.&quot;);</span>
-<span class="nc" id="L33">            System.exit(1);</span>
+<span class="nc" id="L33">            System.err.println(&quot;Please provide the offline website's directory path and the URL(s) used for the site.&quot;);</span>
+<span class="nc" id="L34">            System.exit(1);</span>
         }
 
-        /*
-        * send the input to the WebsiteWalker in order to gather necessary files for analysis
-        */
         else 
         {
-           /* Path offlineDirectoryPathtoExamine = Paths.get(args[0]);
-            WebsiteWalker walker = new WebsiteWalker(offlineDirectoryFilePath);
-            walker.examineOfflineWebsiteDirectory();
-
-            for(Path file: walker.getFileList()) {
-
-            }*/
-           /* //error handling for a malformed link
             try {
-                URL url1 = new URL(argv[1]);
-                String urlPath = url1.getPath();
-                WebsiteWalker walkerToGatherFiles = new WebsiteWalker(argv[0], urlPath); //sends a string url path to w.walker
-            } catch (MalformedURLException e) { 
-                e.printStackTrace();
-            }*/
+<span class="nc" id="L40">                Path absolutePathforDirectory = Paths.get(args[0]); </span>
+<span class="nc" id="L41">                URL websiteURL = new URL(args[1]);           </span>
+            }
+<span class="nc" id="L43">            catch(IOException e)</span>
+            {
+<span class="nc" id="L45">                System.out.println(&quot;Directory does not exist&quot;);</span>
+<span class="nc" id="L46">                System.exit(1);</span>
+<span class="nc" id="L47">            }</span>
         }
-    
+
+<span class="nc" id="L50">        Path offlineDirectoryPathtoExamine = Paths.get(args[0]);</span>
+<span class="nc" id="L51">        WebsiteWalker walker = new WebsiteWalker(offlineDirectoryPathtoExamine);</span>
+
+<span class="nc" id="L53">        walker.examineDirectory(offlineDirectoryPathtoExamine);</span>
+
+        //send all gathered files to the parser for analysis 
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        for(Path path: walker.allFiles)</span>
+        {
+<span class="nc" id="L58">            HTMLDocument htmlDocForPage = new HTMLDocument();</span>
+<span class="nc" id="L59">            DocumentParser parser = new DocumentParser(htmlDocForPage);</span>
+
+<span class="nc" id="L61">            parser.parseThroughFile(htmlDocForPage, path.toFile());</span>
+            
+<span class="nc" id="L63">        }</span>
 
         //output the list of all output files so the user has an idea of what has been created
-            //not sure this works tho.. should this be a method outside of the main method in order to test? 
-        //text file?
-        /*TextWriter textFile = new TextWriter();
-        System.out.println(textFile.getFileName()); 
+        //text file
+<span class="nc" id="L67">        TextWriter textFile = new TextWriter();</span>
+<span class="nc" id="L68">        System.out.println(textFile.getFileName()); </span>
 
-        //json file?
-        JsonWriter jsonFile = new JsonWriter();
-        System.out.println(jsonFile.getFileName());*/
-<span class="nc" id="L68">    }</span>
+        //json file
+<span class="nc" id="L71">        JsonWriter jsonFile = new JsonWriter();</span>
+<span class="nc" id="L72">        System.out.println(jsonFile.getFileName());</span>
+<span class="nc" id="L73">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

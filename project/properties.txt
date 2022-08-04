@@ -5,125 +5,126 @@ Root project
 
 allReports: task ':allReports'
 allprojects: [root project 'CS350Grp5']
-ant: org.gradle.api.internal.project.DefaultAntBuilder@25d8c963
-antBuilderFactory: org.gradle.api.internal.project.DefaultAntBuilderFactory@37f1f4e7
+ant: org.gradle.api.internal.project.DefaultAntBuilder@53bad003
+antBuilderFactory: org.gradle.api.internal.project.DefaultAntBuilderFactory@65ef70ae
 archivesBaseName: CS350Grp5
-artifacts: org.gradle.api.internal.artifacts.dsl.DefaultArtifactHandler_Decorated@238781b5
+artifacts: org.gradle.api.internal.artifacts.dsl.DefaultArtifactHandler_Decorated@7e0ea308
 asDynamicObject: DynamicObject for root project 'CS350Grp5'
 autoTargetJvmDisabled: false
 bake: task ':bake'
-baseClassLoaderScope: org.gradle.api.internal.initialization.DefaultClassLoaderScope@14e0d92e
+baseClassLoaderScope: org.gradle.api.internal.initialization.DefaultClassLoaderScope@7abdbeab
 buildDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build
 buildFile: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build.gradle
 buildHomePage: task ':buildHomePage'
 buildPath: :
-buildScriptSource: org.gradle.groovy.scripts.TextResourceScriptSource@77908900
-buildscript: org.gradle.api.internal.initialization.DefaultScriptHandler@4f7e1dd9
+buildScriptSource: org.gradle.groovy.scripts.TextResourceScriptSource@7f024337
+buildscript: org.gradle.api.internal.initialization.DefaultScriptHandler@61763679
 check: task ':check'
 checkstyle: extension 'checkstyle'
 checkstyleMain: task ':checkstyleMain'
 checkstyleTest: task ':checkstyleTest'
 childProjects: {}
 class: class org.gradle.api.internal.project.DefaultProject_Decorated
-classLoaderScope: org.gradle.api.internal.initialization.DefaultClassLoaderScope@506ba7aa
+classLoaderScope: org.gradle.api.internal.initialization.DefaultClassLoaderScope@6aebdfbc
 classes: task ':classes'
 clean: task ':clean'
 compileJava: task ':compileJava'
 compileTestJava: task ':compileTestJava'
 components: SoftwareComponentInternal set
-configurationActions: org.gradle.configuration.project.DefaultProjectConfigurationActionContainer@42d02d20
-configurationTargetIdentifier: org.gradle.configuration.ConfigurationTargetIdentifier$1@31fb64f3
+configurationActions: org.gradle.configuration.project.DefaultProjectConfigurationActionContainer@7d347cac
+configurationTargetIdentifier: org.gradle.configuration.ConfigurationTargetIdentifier$1@10c283c6
 configurations: configuration container
-convention: org.gradle.internal.extensibility.DefaultConvention@e5427c0
+convention: org.gradle.internal.extensibility.DefaultConvention@4057ba59
 copyAll: task ':copyAll'
 copyDocumentation: task ':copyDocumentation'
+copyJBakePagesForUse: task ':copyJBakePagesForUse'
 copyJBakeTemplates: task ':copyJBakeTemplates'
 copyReports: task ':copyReports'
 defaultArtifacts: extension 'defaultArtifacts'
 defaultTasks: []
-deferredProjectConfiguration: org.gradle.api.internal.project.DeferredProjectConfiguration@30f8757
-dependencies: org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler_Decorated@40f5133b
-dependencyLocking: org.gradle.internal.locking.DefaultDependencyLockingHandler_Decorated@2ac33b2a
+deferredProjectConfiguration: org.gradle.api.internal.project.DeferredProjectConfiguration@74759bd0
+dependencies: org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler_Decorated@2afa58ee
+dependencyLocking: org.gradle.internal.locking.DefaultDependencyLockingHandler_Decorated@2e2232c4
 dependencyReport: task ':dependencyReport'
 depth: 0
 description: null
 displayName: root project 'CS350Grp5'
 distsDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/distributions
 distsDirName: distributions
-distsDirectory: property(org.gradle.api.file.Directory, map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@5066395))
+distsDirectory: property(org.gradle.api.file.Directory, map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@535ac02b))
 docsDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/docs
 docsDirName: docs
-ext: org.gradle.internal.extensibility.DefaultExtraPropertiesExtension@7a4c695d
-extensions: org.gradle.internal.extensibility.DefaultConvention@e5427c0
-fileOperations: org.gradle.api.internal.file.DefaultFileOperations@12c8c1e4
-fileResolver: org.gradle.api.internal.file.BaseDirFileResolver@2161a2fc
+ext: org.gradle.internal.extensibility.DefaultExtraPropertiesExtension@b296a8b
+extensions: org.gradle.internal.extensibility.DefaultConvention@4057ba59
+fileOperations: org.gradle.api.internal.file.DefaultFileOperations@73ec7e28
+fileResolver: org.gradle.api.internal.file.BaseDirFileResolver@4c67c683
 gradle: build 'CS350Grp5'
 group: 
 htmlDependencyReport: task ':htmlDependencyReport'
 identityPath: :
-inheritedScope: org.gradle.internal.extensibility.ExtensibleDynamicObject$InheritedDynamicObject@174d778e
+inheritedScope: org.gradle.internal.extensibility.ExtensibleDynamicObject$InheritedDynamicObject@49391cbc
 jacoco: extension 'jacoco'
 jacocoTestReport: task ':jacocoTestReport'
 jar: task ':jar'
 java: extension 'java'
-javaInstalls: org.gradle.jvm.toolchain.internal.DefaultJavaInstallationRegistry@e52f2bb
+javaInstalls: org.gradle.jvm.toolchain.internal.DefaultJavaInstallationRegistry@9044a22
 javaToolchains: extension 'javaToolchains'
 javadoc: task ':javadoc'
 jbake: extension 'jbake'
-layout: org.gradle.api.internal.file.DefaultProjectLayout@5a41d574
+layout: org.gradle.api.internal.file.DefaultProjectLayout@19897814
 libsDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/libs
 libsDirName: libs
-libsDirectory: property(org.gradle.api.file.Directory, map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@761bfa82))
-listenerBuildOperationDecorator: org.gradle.configuration.internal.DefaultListenerBuildOperationDecorator@a9612c8
-logger: org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@18ba48f0
-logging: org.gradle.internal.logging.services.DefaultLoggingManager@13c8ee0b
+libsDirectory: property(org.gradle.api.file.Directory, map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@6b28f678))
+listenerBuildOperationDecorator: org.gradle.configuration.internal.DefaultListenerBuildOperationDecorator@6af5cb5d
+logger: org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@7346dc51
+logging: org.gradle.internal.logging.services.DefaultLoggingManager@410bd97b
 model: project :
 modelIdentityDisplayName: null
-modelRegistry: org.gradle.model.internal.registry.DefaultModelRegistry@47f67373
-modelSchemaStore: org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore@24113855
-module: org.gradle.api.internal.artifacts.ProjectBackedModule@203a3262
+modelRegistry: org.gradle.model.internal.registry.DefaultModelRegistry@13104096
+modelSchemaStore: org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore@70c049fa
+module: org.gradle.api.internal.artifacts.ProjectBackedModule@4a9db3a7
 mutationState: project :
 name: CS350Grp5
-normalization: org.gradle.normalization.internal.DefaultInputNormalizationHandler_Decorated@6e104ee5
-objects: org.gradle.api.internal.model.DefaultObjectFactory@542a01bd
+normalization: org.gradle.normalization.internal.DefaultInputNormalizationHandler_Decorated@3f27efba
+objects: org.gradle.api.internal.model.DefaultObjectFactory@7bcc7420
 parent: null
 parentIdentifier: null
 path: :
-pluginManager: org.gradle.api.internal.plugins.DefaultPluginManager_Decorated@c61585
-plugins: [org.gradle.api.plugins.HelpTasksPlugin@74df8305, org.gradle.buildinit.plugins.BuildInitPlugin@18d49c1d, org.gradle.buildinit.plugins.WrapperPlugin@1c774153, org.gradle.api.plugins.ReportingBasePlugin@2cad1565, com.github.spotbugs.snom.SpotBugsBasePlugin@24626c5e, com.github.spotbugs.snom.SpotBugsPlugin@186a38bb, org.gradle.language.base.plugins.LifecycleBasePlugin@3eb18f3c, org.gradle.api.plugins.BasePlugin@7a73b3b2, org.jbake.gradle.JBakePlugin@4dc4303e, org.gradle.api.plugins.JvmEcosystemPlugin@4a276dd, org.gradle.api.plugins.JavaBasePlugin$Inject@36d8c11a, org.gradle.api.plugins.JavaPlugin@51510a50, org.gradle.testing.jacoco.plugins.JacocoPlugin@3d788584, org.gradle.api.plugins.quality.PmdPlugin@2afb0868, org.gradle.api.plugins.quality.CheckstylePlugin@5adbdc3c, org.gradle.api.plugins.ProjectReportsPlugin@3015ebd]
+pluginManager: org.gradle.api.internal.plugins.DefaultPluginManager_Decorated@6413aa23
+plugins: [org.gradle.api.plugins.HelpTasksPlugin@759652c7, org.gradle.buildinit.plugins.BuildInitPlugin@754c39f0, org.gradle.buildinit.plugins.WrapperPlugin@6db93e0d, org.gradle.api.plugins.ReportingBasePlugin@1482c32b, com.github.spotbugs.snom.SpotBugsBasePlugin@5345ab16, com.github.spotbugs.snom.SpotBugsPlugin@47528b37, org.gradle.language.base.plugins.LifecycleBasePlugin@63bf9c86, org.gradle.api.plugins.BasePlugin@61268041, org.jbake.gradle.JBakePlugin@1fc59a68, org.gradle.api.plugins.JvmEcosystemPlugin@4c1da194, org.gradle.api.plugins.JavaBasePlugin$Inject@53594f3d, org.gradle.api.plugins.JavaPlugin@6a8f99f, org.gradle.testing.jacoco.plugins.JacocoPlugin@358d35f8, org.gradle.api.plugins.quality.PmdPlugin@14bd23dc, org.gradle.api.plugins.quality.CheckstylePlugin@d84a6d1, org.gradle.api.plugins.ProjectReportsPlugin@4ca1c2ff]
 pmd: extension 'pmd'
 pmdMain: task ':pmdMain'
 pmdTest: task ':pmdTest'
-processOperations: org.gradle.process.internal.DefaultExecActionFactory$DecoratingExecActionFactory@7aacbffc
+processOperations: org.gradle.process.internal.DefaultExecActionFactory$DecoratingExecActionFactory@10df1c66
 processResources: task ':processResources'
 processTestResources: task ':processTestResources'
 project: root project 'CS350Grp5'
-projectConfigurator: org.gradle.api.internal.project.BuildOperationCrossProjectConfigurator@8664089
+projectConfigurator: org.gradle.api.internal.project.BuildOperationCrossProjectConfigurator@6d817e62
 projectDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5
 projectEvaluationBroadcaster: ProjectEvaluationListener broadcast
-projectEvaluator: org.gradle.configuration.project.LifecycleProjectEvaluator@cd84785
+projectEvaluator: org.gradle.configuration.project.LifecycleProjectEvaluator@451bff2d
 projectPath: :
-projectRegistry: org.gradle.api.internal.project.DefaultProjectRegistry@5a51415
+projectRegistry: org.gradle.api.internal.project.DefaultProjectRegistry@7ef6b4b
 projectReport: task ':projectReport'
 projectReportDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/reports/project
 projectReportDirName: project
 projects: [root project 'CS350Grp5']
 properties: {...}
 propertyReport: task ':propertyReport'
-providers: org.gradle.api.internal.provider.DefaultProviderFactory_Decorated@1ae91802
+providers: org.gradle.api.internal.provider.DefaultProviderFactory_Decorated@6f3b6bfc
 publicType: org.gradle.api.plugins.BasePluginConvention
 rawSourceCompatibility: 11
 rawTargetCompatibility: 11
 reporting: extension 'reporting'
 reportsDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5/build/reports
 repositories: repository container
-resources: org.gradle.api.internal.resources.DefaultResourceHandler@20b171de
+resources: org.gradle.api.internal.resources.DefaultResourceHandler@9af7a17
 rootDir: /mnt/c/Users/Patrick/Documents/CS350/CS350Grp5
 rootProject: root project 'CS350Grp5'
 script: false
-scriptHandlerFactory: org.gradle.api.internal.initialization.DefaultScriptHandlerFactory@6e1bfe22
-scriptPluginFactory: org.gradle.configuration.ScriptPluginFactorySelector@43334a48
-serviceRegistryFactory: org.gradle.internal.service.scopes.ProjectScopeServices$$Lambda$1107/0x0000000840d17840@9ed776d
+scriptHandlerFactory: org.gradle.api.internal.initialization.DefaultScriptHandlerFactory@13571e98
+scriptPluginFactory: org.gradle.configuration.ScriptPluginFactorySelector@6f1e8a8a
+serviceRegistryFactory: org.gradle.internal.service.scopes.ProjectScopeServices$$Lambda$1158/0x00000008409d3040@205e65c2
 services: ProjectScopeServices
 setUpWebsite: task ':setUpWebsite'
 sourceCompatibility: 11
@@ -131,7 +132,7 @@ sourceSets: SourceSet container
 spotbugs: extension 'spotbugs'
 spotbugsMain: task ':spotbugsMain'
 spotbugsTest: task ':spotbugsTest'
-standardOutputCapture: org.gradle.internal.logging.services.DefaultLoggingManager@13c8ee0b
+standardOutputCapture: org.gradle.internal.logging.services.DefaultLoggingManager@410bd97b
 state: project state 'EXECUTED'
 status: integration
 subprojects: []

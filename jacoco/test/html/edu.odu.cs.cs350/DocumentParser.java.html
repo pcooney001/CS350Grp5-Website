@@ -434,30 +434,75 @@ public class DocumentParser {
      * When file is found, new Resource object is made and then added to the 
      * miscFiles array list within the HTMLDocument
      * @param document to iterate through to find possibly existing misc files
-     * @param inFile
+     * @param inFile file to scan through for misc files
      */
     public void extractMiscFile(HTMLDocument document, File inFile)
     {
-        //anything that does not fall under another category
-<span class="nc" id="L442">    }</span>
+<span class="fc" id="L441">        File currentFile = inFile; </span>
+
+        try {
+
+<span class="fc" id="L445">            Scanner scan = new Scanner(currentFile);</span>
+<span class="fc" id="L446">            String temp = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L448" title="All 2 branches covered.">            while(scan.hasNext())</span>
+            {
+<span class="fc" id="L450">                scan.useDelimiter(&quot;&lt;source&quot;);   </span>
+<span class="pc bpc" id="L451" title="1 of 2 branches missed.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L453">                    scan.next();</span>
+                }
+<span class="fc" id="L455">                scan.useDelimiter(&quot;\&quot;&quot;);</span>
+<span class="fc bfc" id="L456" title="All 2 branches covered.">                if(scan.hasNext())</span>
+                {
+<span class="fc" id="L458">                    scan.next();</span>
+<span class="fc" id="L459">                    temp = scan.next();</span>
+                }
+                //all the other file extensions used in the extractFile methods that are to be ignored
+<span class="fc bfc" id="L462" title="All 2 branches covered.">                if(temp.contains(&quot;.tar&quot;) ||</span>
+<span class="fc bfc" id="L463" title="All 2 branches covered.">                   temp.contains(&quot;.zip&quot;) ||</span>
+<span class="fc bfc" id="L464" title="All 2 branches covered.">                   temp.contains(&quot;.7z&quot;) ||</span>
+<span class="pc bpc" id="L465" title="1 of 2 branches missed.">                   temp.contains(&quot;.gz&quot;) ||</span>
+<span class="fc bfc" id="L466" title="All 2 branches covered.">                   temp.contains(&quot;.ogg&quot;) ||</span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">                   temp.contains(&quot;.mp3&quot;) ||</span>
+<span class="pc bpc" id="L468" title="1 of 2 branches missed.">                   temp.contains(&quot;.mkv&quot;) ||</span>
+<span class="pc bpc" id="L469" title="1 of 2 branches missed.">                   temp.contains(&quot;.mp4&quot;) ||</span>
+<span class="pc bpc" id="L470" title="1 of 2 branches missed.">                   temp.contains(&quot;.m4a&quot;) ||</span>
+<span class="pc bpc" id="L471" title="1 of 2 branches missed.">                   temp.contains(&quot;.mka&quot;))</span>
+                {
+                    /*
+                     * left empty as a &quot;do nothing,&quot; forces program to move onto the
+                     * else statement, adding the miscellaneous file
+                     */
+                }else{
+<span class="fc" id="L478">                    document.addMiscFile(temp);</span>
+                }
+            }
+
+<span class="fc" id="L482">            scan.close();</span>
+<span class="nc" id="L483">        } catch (FileNotFoundException e) {</span>
+            
+<span class="nc" id="L485">            e.printStackTrace();</span>
+<span class="fc" id="L486">        }</span>
+<span class="fc" id="L487">    }</span>
 
     /**
      * Will parse through the entire file, calling each individual extract method
      * to store into the HTMLDocument.
-     * @param document
-     * @param inFile
+     * @param document storage HTMLDocument object
+     * @param inFile file to be analyzed by the parser
      */
     public void parseThroughFile(HTMLDocument document, File inFile)
     {
-<span class="nc" id="L452">        extractAnchors(document, inFile);</span>
-<span class="nc" id="L453">        extractImages(document, inFile);</span>
-<span class="nc" id="L454">        extractScripts(document, inFile);</span>
-<span class="nc" id="L455">        extractLinks(document, inFile);</span>
-<span class="nc" id="L456">        extractStyleSheet(document, inFile);</span>
-<span class="nc" id="L457">        extractArchivedFile(document, inFile);</span>
-<span class="nc" id="L458">        extractVideoFile(document, inFile);</span>
-<span class="nc" id="L459">        extractAudioFile(document, inFile);</span>
-<span class="nc" id="L460">        extractMiscFile(document, inFile);</span>
-<span class="nc" id="L461">    }</span>
+<span class="fc" id="L497">        extractAnchors(document, inFile);</span>
+<span class="fc" id="L498">        extractImages(document, inFile);</span>
+<span class="fc" id="L499">        extractScripts(document, inFile);</span>
+<span class="fc" id="L500">        extractLinks(document, inFile);</span>
+<span class="fc" id="L501">        extractStyleSheet(document, inFile);</span>
+<span class="fc" id="L502">        extractArchivedFile(document, inFile);</span>
+<span class="fc" id="L503">        extractVideoFile(document, inFile);</span>
+<span class="fc" id="L504">        extractAudioFile(document, inFile);</span>
+<span class="fc" id="L505">        extractMiscFile(document, inFile);</span>
+<span class="fc" id="L506">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -13,14 +13,13 @@ import java.nio.file.Paths;
 
 
 /**
- * Gathers the files necessary before sending them through the Document Parser. 
+ * Walks through the directory to gathers the files necessary before sending them through the Document Parser. 
  */
 public class WebsiteWalker 
 {   
 
     private Path offlineDirectoryPath;
-    private String websiteURL;
-
+   
     List&lt;Path&gt; allFiles;
     List&lt;Path&gt; allDirectories; 
 
@@ -29,29 +28,28 @@ public class WebsiteWalker
     * @param offlineDirectoryPath
     */
    public WebsiteWalker(Path offlineDirectoryFilePath)
-<span class="nc" id="L32">    {</span>
-<span class="nc" id="L33">        this.offlineDirectoryPath = offlineDirectoryFilePath;</span>
-<span class="nc" id="L34">        this.websiteURL = &quot;&quot;;</span>
+<span class="nc" id="L31">    {</span>
+<span class="nc" id="L32">        this.offlineDirectoryPath = offlineDirectoryFilePath;</span>
 
-<span class="nc" id="L36">        this.allFiles = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L37">        this.allDirectories = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L34">        this.allFiles = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L35">        this.allDirectories = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L36">    }</span>
 
      /**
       * Examines the directory to identify all files and subdirectories
       * @throws IOException if directory could not be read 
       */
-    public void examineOfflineWebsiteDirectory() throws IOException
+    public void examineDirectory(Path directoryPath) throws IOException
     {
-<span class="nc" id="L46">       Files.walk(this.offlineDirectoryPath).forEach((Path path) -&gt; {</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">            if(Files.isRegularFile(path)){</span>
-<span class="nc" id="L48">                this.allFiles.add(path);</span>
+<span class="nc" id="L44">       Files.walk(directoryPath).forEach((Path path) -&gt; {</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if(Files.isRegularFile(path)){</span>
+<span class="nc" id="L46">                this.allFiles.add(path);</span>
             }
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            else if (Files.isDirectory(path)){</span>
-<span class="nc" id="L51">                this.allDirectories.add(path);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">            else if (Files.isDirectory(path)){</span>
+<span class="nc" id="L49">                this.allDirectories.add(path);</span>
             }
-<span class="nc" id="L53">        });</span>
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L51">        });</span>
+<span class="nc" id="L52">    }</span>
 
     /** 
      * Retrive the offline directory path 
@@ -59,16 +57,7 @@ public class WebsiteWalker
      */
     public Path getOfflineDirectoryPath()
     {
-<span class="nc" id="L62">        return offlineDirectoryPath;</span>
-    }
-
-    /**
-     * Retrive the website URL
-     * @return websiteURL
-     */
-    public String getWebsiteURLs()
-    {
-<span class="nc" id="L71">        return websiteURL;</span>
+<span class="nc" id="L60">        return offlineDirectoryPath;</span>
     }
 
      /**
@@ -77,7 +66,7 @@ public class WebsiteWalker
      */
     public List&lt;Path&gt; getFileList()
     {
-<span class="nc" id="L80">        return this.allFiles;</span>
+<span class="nc" id="L69">        return this.allFiles;</span>
     }
 
     /**
@@ -86,7 +75,7 @@ public class WebsiteWalker
      */
     public List&lt;Path&gt; getDirectoryList()
     {
-<span class="nc" id="L89">        return this.allDirectories;</span>
+<span class="nc" id="L78">        return this.allDirectories;</span>
     }
 
 }
